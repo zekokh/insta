@@ -1,0 +1,58 @@
+
+
+<div class="container-fluid">
+  <div class="row">
+       <%= render 'patrial/navbar' %>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <%= render('patrial/sidebar', menu: {active: "настройки"}) %>
+      <div class="col-lg-6">
+      <% if @information %>
+            <% if notice %>
+                <div class="alert alert-info"> <%= notice %> </div>
+            <% end %>
+          <h4>Информация для подключения</h4>
+          <div class="thumbnail">
+            <div class="caption">
+
+
+              <strong>client_id:</strong>
+              <%= @information.client_id %>
+              </p>
+              <p>
+                <strong>client_secret:</strong>
+                <%= @information.client_secret %>
+              </p>
+
+              <p>
+                <strong>code:</strong>
+                <%= @information.code %>
+              </p>
+
+              <% if @information.access_token %>
+                  <p>
+                    <strong>access_token:</strong>
+                    <%= @information.access_token %>
+                  </p>
+              <% else %>
+                  <p>
+                    <strong>access_token:</strong>
+                    не был получен
+                  </p>
+              <% end %>
+              <%= link_to 'Изменить', edit_information_to_connect_path(@information) %></td>
+              <%= link_to 'Удалить', information_to_connect_path(@information.id), method: :delete, data: {confirm: 'Вы уыерены?'} %></td>
+
+            </div>
+          </div>
+
+      <% else %>
+          <div class="well well-lg">В базе нет информации о подключении!<br/>
+            <%= link_to 'Добавить?', new_information_to_connect_path %>
+          </div>
+      <% end %>
+
+
+      </div>
+    </div>
+  </div>
+</div>

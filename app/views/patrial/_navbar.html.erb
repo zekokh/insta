@@ -1,0 +1,14 @@
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="http://sdigital.org">sdigital | акции в instagram</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><%= current_user.name %></a></li>
+        <li> <%= link_to 'выйти', session_url(current_user), method: 'delete' %></li>
+      </ul>
+    </div>
+  </div>
+</nav>

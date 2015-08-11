@@ -1,0 +1,17 @@
+<div class="container">
+
+  <%= form_tag("/sessions", method: "post", class: 'form-signin') do %>
+      <% if flash[:alert] %>
+          <div class="alert alert-danger"> <%= flash[:alert] %> </div>
+      <% end %>
+      <% if notice %>
+          <div class="alert alert-info"> <%= notice %> </div>
+      <% end %>
+
+      <%= text_field_tag :login, params[:login], class: 'form-control', placeholder: 'имя', type: 'login' %>
+      <%= text_field_tag :password, params[:password], class: 'form-control', placeholder: 'пароль', type: 'password', id: 'inputPassword' %>
+
+      <%= submit_tag 'Войти в систему', class: 'btn btn-lg btn-primary btn-block' %>
+  <% end %>
+
+</div> <!-- /container -->

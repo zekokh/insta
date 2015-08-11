@@ -1,0 +1,91 @@
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        /* Проверка на пустоту полей для заполнения партнер */
+
+        var checkFealds = function() {
+            var client_id, client_secret, code, flag;
+            flag = true;
+            client_id = $('#information_to_connect_client_id').val().replace(/\s+/g, '');
+            client_secret = $('#information_to_connect_client_secret').val().replace(/\s+/g, '');
+            code = $('#partninformation_to_connect_code').val().replace(/\s+/g, '');
+
+            /* client_id */
+            if (client_id.length === 0) {
+                $('div#client_id').attr('class', 'form-group has-error');
+                $('#information_to_connect_client_id').val('');
+                flag = false;
+            } else {
+                $('div#client_id').attr('class', 'form-group');
+                if (flag === false) {
+                    flag = false;
+                } else {
+                    flag = true;
+                }
+            }
+
+            /* client_secret */
+            if (client_secret.length === 0) {
+                $('div#client_secret').attr('class', 'form-group has-error');
+                $('#information_to_connect_client_secret').val('');
+                flag = false;
+            } else {
+                $('div#client_secret').attr('class', 'form-group');
+                if (flag === false) {
+                    flag = false;
+                } else {
+                    flag = true;
+                }
+            }
+
+            /* code */
+            if (code.length === 0) {
+                $('div#code').attr('class', 'form-group has-error');
+                $('#partninformation_to_connect_code').val('');
+                flag = false;
+            } else {
+                $('div#code').attr('class', 'form-group');
+                if (flag === false) {
+                    flag = false;
+                } else {
+                    flag = true;
+                }
+            }
+            return flag;
+        };
+
+    });
+</script>
+
+<div class="container-fluid">
+  <div class="row">
+    <%= render 'patrial/navbar' %>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <%= render('patrial/sidebar', menu: {active: "настройки"}) %>
+
+      <div class="col-lg-6">
+        <div class="alert alert-info"> Информация о приложении для подключении к API instagram </div>
+        <%= form_for(@information, :html => {onsubmit: "return checkFealds()"}) do |f| %>
+            <% if @information.errors.any? %>
+                <div id="error_explanation">
+
+                  <% @information.errors.full_messages.each do |msg| %>
+                      <div class="alert alert-warning" role="alert"><%= msg %></div>
+                  <% end %>
+                </div>
+            <% end %>
+
+            <div id="client_id" class="form-group"><%= f.text_field :client_id, class: "form-control", placeholder: "client_id*", maxlength: 30 %></div>
+            <div id="client_secret" class="form-group"><%= f.text_field :client_secret, class: "form-control", placeholder: "client_secret*", maxlength: 30 %></div>
+            <div id="code" class="form-group"><%= f.text_field :code, class: "form-control", placeholder: "code*", id: "code*", maxlength: 30 %></div>
+            <br/>
+
+            <%= f.submit 'Добавить', class: "btn btn-primary" %>
+
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
