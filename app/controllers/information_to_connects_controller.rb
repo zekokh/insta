@@ -2,7 +2,18 @@ class InformationToConnectsController < ApplicationController
   before_action :set_information, only: [:show, :edit, :update, :destroy]
 
   def index
-    @information = InformationToConnect.first
+    @information_first = InformationToConnect.first
+    if @information_first
+      if params[:code]
+        @information_first.code=params[:code]
+        @information_first.save
+        redirect_to information_to_connect_path(@information_first), notice: 'Code успешно получен!'
+      else
+        redirect_to information_to_connect_path(@information_first)
+      end
+    else
+      redirect_to new_information_to_connect_path
+    end
   end
 
   def new
@@ -11,12 +22,10 @@ class InformationToConnectsController < ApplicationController
     else
       @information = InformationToConnect.new
     end
-
   end
 
   def create
     @information = InformationToConnect.new(information_params)
-
     if @information.save
       redirect_to @information, notice: 'Информация для подключения успешно добавлена в систему!'
     else

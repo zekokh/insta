@@ -1,2 +1,52 @@
-<h1>Stock#show</h1>
-<p>Find me in app/views/stock/show.html.erb</p>
+<div class="container-fluid">
+  <div class="row">
+    <%= render 'patrial/navbar' %>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <%= render('patrial/sidebar', menu: {active: "акция"}) %>
+      <div class="col-lg-12">
+        <% if @stock.errors.any? %>
+            <div id="error_explanation">
+
+              <% @stock.errors.full_messages.each do |msg| %>
+                  <div class="alert alert-warning" role="alert"><%= msg %></div>
+              <% end %>
+            </div>
+        <% end %>
+        <table class="table">
+          <thead>
+          <tr>
+            <th>дата начало</th>
+            <th>дата окончания</th>
+            <th>время окончания</th>
+            <th>число победителей</th>
+            <th>хэштег</th>
+            <th>статус</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><%= @stock.start_date %></td>
+            <td><%= @stock.expiration_date %></td>
+            <td><%= @stock.expiration_time %></td>
+            <td><%= @stock.number_of_the_winners %></td>
+            <td><%= @stock.hashtag %></td>
+            <% if @stock.is_valid %>
+                <td>Акция активна</td>
+                <td><%= link_to 'Остановить', edit_stock_path(@stock) %></td>
+                </td>
+            <% else %>
+                <td>Акция остановленна</td>
+                <td><%= link_to 'Удалить', stock_path(@stock), method: :delete, data: {confirm: 'Вы уыерены?'} %></td>
+                </td>
+            <% end %>
+
+
+          </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>

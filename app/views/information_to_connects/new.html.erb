@@ -76,9 +76,8 @@
                 </div>
             <% end %>
 
-            <div id="client_id" class="form-group"><%= f.text_field :client_id, class: "form-control", placeholder: "client_id*", maxlength: 30 %></div>
-            <div id="client_secret" class="form-group"><%= f.text_field :client_secret, class: "form-control", placeholder: "client_secret*", maxlength: 30 %></div>
-            <div id="code" class="form-group"><%= f.text_field :code, class: "form-control", placeholder: "code*", id: "code*", maxlength: 30 %></div>
+            <div id="client_id" class="form-group"><%= f.text_field :client_id, class: "form-control", placeholder: "client_id", maxlength: 1024 %></div>
+            <div id="client_secret" class="form-group"><%= f.text_field :client_secret, class: "form-control", placeholder: "client_secret", maxlength: 1024 %></div>
             <br/>
 
             <%= f.submit 'Добавить', class: "btn btn-primary" %>
