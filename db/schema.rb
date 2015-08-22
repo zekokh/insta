@@ -11,13 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150810140616) do
+ActiveRecord::Schema.define(version: 20150814100414) do
 
   create_table "information_to_connects", force: true do |t|
     t.string   "client_id"
     t.string   "client_secret"
     t.string   "code"
     t.string   "access_token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "members", force: true do |t|
+    t.string   "name"
+    t.string   "nickname"
+    t.integer  "likes"
+    t.string   "publication_date"
+    t.string   "photo_url"
+    t.boolean  "display_in_stocks", default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

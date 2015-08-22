@@ -2,10 +2,10 @@
     $(document).ready(function () {
         /* Активируется датапикер на поле Дата рождения */
         $('#stock_start_date').datepicker({
-            format: 'mm.dd.yyyy'
+            format: 'dd.mm.yyyy'
         });
         $('#stock_expiration_date').datepicker({
-            format: 'mm.dd.yyyy'
+            format: 'dd.mm.yyyy'
         });
     });
 </script>
@@ -16,23 +16,27 @@
       <%= render('patrial/sidebar', menu: {active: "акция"}) %>
       <div class="col-lg-6">
         <div class="well well-lg">
-          <%= form_for(@stock, :html => {onsubmit: "return checkFealds()"}) do |f| %>
-              <% if @stock.errors.any? %>
-                  <div id="error_explanation">
+              <% if @information_to_connect && @information_to_connect.access_token && @information_to_connect.code %>
+                  <%= form_for(@stock, :html => {onsubmit: "return checkFealds()"}) do |f| %>
+                      <% if @stock.errors.any? %>
+                          <div id="error_explanation">
 
-                    <% @stock.errors.full_messages.each do |msg| %>
-                        <div class="alert alert-warning" role="alert"><%= msg %></div>
-                    <% end %>
-                  </div>
+                            <% @stock.errors.full_messages.each do |msg| %>
+                                <div class="alert alert-warning" role="alert"><%= msg %></div>
+                            <% end %>
+                          </div>
+                      <% end %>
+                      <div id="start_date" class="form-group"><%= f.text_field :start_date, class: "form-control", placeholder: "дата начала", maxlength: 30 %></div>
+                      <div id="expiration_date" class="form-group"><%= f.text_field :expiration_date, class: "form-control", placeholder: "дата окончания", maxlength: 30 %></div>
+                      <div id="expiration_time" class="form-group"><%= f.text_field :expiration_time, class: "form-control", placeholder: "время окончания", maxlength: 30 %></div>
+                      <div id="number_of_the_winners" class="form-group"><%= f.text_field :number_of_the_winners, class: "form-control", placeholder: "число победителей", maxlength: 30 %></div>
+                      <div id="hashtag" class="form-group"><%= f.text_field :hashtag, class: "form-control", placeholder: "хэштег", maxlength: 30 %></div>
+                      <br/>
+                      <%= f.submit 'Добавить', class: "btn btn-primary" %>
+                  <% end %>
+              <% else %>
+                  Подключение не настроенно, для создания акции сначало настройте подключение в меню "настройки"!
               <% end %>
-              <div id="start_date" class="form-group"><%= f.text_field :start_date, class: "form-control", placeholder: "дата начала", maxlength: 30 %></div>
-              <div id="expiration_date" class="form-group"><%= f.text_field :expiration_date, class: "form-control", placeholder: "дата окончания", maxlength: 30 %></div>
-              <div id="expiration_time" class="form-group"><%= f.text_field :expiration_time, class: "form-control", placeholder: "время окончания", maxlength: 30 %></div>
-              <div id="number_of_the_winners" class="form-group"><%= f.text_field :number_of_the_winners, class: "form-control", placeholder: "число победителей", maxlength: 30 %></div>
-              <div id="hashtag" class="form-group"><%= f.text_field :hashtag, class: "form-control", placeholder: "хэштег", maxlength: 30 %></div>
-              <br/>
-              <%= f.submit 'Добавить', class: "btn btn-primary" %>
-          <% end %>
         </div>
       </div>
     </div>

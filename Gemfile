@@ -6,6 +6,7 @@ gem 'pry-rails'
 gem 'rest-client'
 gem 'json'
 gem 'instagram'
+gem 'whenever', :require => false
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'

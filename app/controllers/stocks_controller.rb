@@ -3,14 +3,17 @@ class StocksController < ApplicationController
 
 
   def index
-    if Stock.first
-      redirect_to stocks_path(Stock.first)
+    stock ||= Stock.first
+    if stock
+      redirect_to stock_path(stock.id)
     else
       redirect_to new_stock_path
     end
   end
 
   def new
+    @information_to_connect ||= InformationToConnect.first
+
     if Stock.first
       redirect_to stock_index_url, notice: 'Акция уже запущенна, для запуска новой Акции остановите текущую!'
     else
@@ -29,15 +32,19 @@ class StocksController < ApplicationController
   end
 
   def show
-    if @stock
-      if @stock.is_valid == true
-      end
-    end
+    Manager.start
+    @members = Member.order(likes: :desc)
+
+    #@members = Member.all
+
+    # pretty_json = JSON.pretty_generate(json)
+    #puts(pretty_json)
   end
 
   def edit
     @stock.is_valid=false
     if @stock.save
+      @members = Member.order(likes: :desc).take(10)
       render 'show'
     else
       render 'show'
@@ -48,6 +55,7 @@ class StocksController < ApplicationController
   end
 
   def destroy
+    Member.delete_all
     @stock.destroy
     redirect_to stocks_path
   end
