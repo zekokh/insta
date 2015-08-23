@@ -25,4 +25,3 @@ production:
   username: lailawrkgpqnre
   password: HzRC68UETJT2U0Br37zIBHCi_l
   host: ec2-54-197-255-248.compute-1.amazonaws.com
-  timeout: 5000
