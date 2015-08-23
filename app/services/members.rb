@@ -1,7 +1,9 @@
 class Members
-  @stock ||= Stock.first
-  @start_date ||=Time.parse(@stock.start_date).to_i
-  @expiration_date ||= "#{@stock.expiration_date} #{@stock.expiration_time}".to_time.to_i
+  if Stock.first
+    @stock ||= Stock.first
+    @start_date ||=Time.parse(@stock.start_date).to_i
+    @expiration_date ||= "#{@stock.expiration_date} #{@stock.expiration_time}".to_time.to_i
+  end
   # Поиск участников по тегу указанному в акции
   def Members.search(tag, access_token)
     json ||= JSON.parse(RestClient.get "https://api.instagram.com/v1/tags/#{tag}/media/recent?access_token=#{access_token}")
