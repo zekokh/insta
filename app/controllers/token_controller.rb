@@ -10,7 +10,7 @@ class TokenController < ApplicationController
       params_to_access_token = { client_id: client_id,
                  client_secret: client_secret,
                  grant_type: 'authorization_code',
-                 redirect_uri: 'http://localhost:3000/information_to_connects',
+                 redirect_uri: 'https://zekokhinsta.herokuapp.com/information_to_connects',
                  code: code }
       json ||= JSON.parse(RestClient.post 'https://api.instagram.com/oauth/access_token', params_to_access_token)
       access_token = json['access_token']
