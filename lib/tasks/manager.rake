@@ -3,5 +3,4 @@ namespace :manager do
   task start: :environment do
     Manager.start
   end
-
 end
