@@ -1,7 +1,9 @@
 class Manager
-  @stock = Stock.first
-  @tag ||= URI.encode(@stock.hashtag)
-  @info ||= InformationToConnect.first
+  if Stock.first
+    @stock = Stock.first
+    @tag = URI.encode(@stock.hashtag)
+    @info = InformationToConnect.first
+  end
 
   def Manager.start
     if @stock !=nil
