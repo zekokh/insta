@@ -1,5 +1,5 @@
 class Manager
-  @stock ||= Stock.first
+  @stock = Stock.first
   @tag ||= URI.encode(@stock.hashtag)
   @info ||= InformationToConnect.first
 
