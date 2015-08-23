@@ -18,6 +18,8 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+=begin
  every 1.minute do
    runner "Manager.start"
  end
+=end
