@@ -1,5 +1,5 @@
 class Members
-  if Stock.first
+  if Stock.first !=nil
     @stock ||= Stock.first
     @start_date ||=Time.parse(@stock.start_date).to_i
     @expiration_date ||= "#{@stock.expiration_date} #{@stock.expiration_time}".to_time.to_i

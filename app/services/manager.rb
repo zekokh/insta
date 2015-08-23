@@ -1,5 +1,5 @@
 class Manager
-  if Stock.first
+  if Stock.first !=nil
     @stock = Stock.first
     @tag = URI.encode(@stock.hashtag)
     @info = InformationToConnect.first
