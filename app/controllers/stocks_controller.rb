@@ -33,9 +33,9 @@ class StocksController < ApplicationController
 
   def show
     Manager.start
-    #@members = Member.order(likes: :desc)
+    @members = Member.order(likes: :desc)
 
-    @members = Member.all
+    #@members = Member.all
 
     # pretty_json = JSON.pretty_generate(json)
     #puts(pretty_json)
