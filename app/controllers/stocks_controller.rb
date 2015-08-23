@@ -32,7 +32,7 @@ class StocksController < ApplicationController
   end
 
   def show
-    Manager.start
+    #Manager.start
     @members = Member.order(likes: :desc)
 
     #@members = Member.all
