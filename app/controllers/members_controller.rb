@@ -17,6 +17,6 @@ class MembersController < ApplicationController
   end
 
   def show
-
+    @member = Member.find_by(id: parames[:id])
   end
 end
