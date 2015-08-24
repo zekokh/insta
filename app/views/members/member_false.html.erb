@@ -3,7 +3,7 @@
     <%= render 'patrial/navbar' %>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
       <%= render('patrial/sidebar', menu: {active: "заблокированные"}) %>
-      <div class="col-lg-5">
+      <div class="col-lg-6">
 
         <% if @members_false.length > 0 %>
             <table class="table">
@@ -31,10 +31,13 @@
                     <td></td>
                   </tr>
                   <tr>
-                    <td> <b>Лайки:</b> <%= member.likes %></td>
                     <td><%= link_to 'Разблокировать', '/', method: "get", type: "button", class: "btn btn-default" %></td>
+                    <td><b>Лайки:</b> <%= member.likes %></td>
                   </tr>
-              <tr><td></td><td></td></tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
               <% end %>
               </tbody>
             </table>
