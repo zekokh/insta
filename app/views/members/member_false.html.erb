@@ -9,7 +9,8 @@
             <table class="table table-hover">
               <thead>
               <tr>
-                <th>№</th>
+                <th></th>
+                <th></th>
                 <th></th>
               </tr>
               </thead>
@@ -18,13 +19,13 @@
                   <tr> <td><%= image_tag member.photo_url, height: '32', width: '32' %></td></tr>
                   <tr>
                     <% if member.name.length > 0 %>
-                        <td><%= member.name %></td>
+                        <%= member.name %>
                     <% else %>
-                        <td>Имя не указанно</td>
+                        Имя не указанно
                     <% end %>
-                    <td><%= member.nickname %></td>
-                    <td><%= member.likes %></td>
-                    <td><%= Time.at(member.publication_date.to_i).to_formatted_s(:db) %></td>
+                    <%= member.nickname %>
+                    Лайки: <%= member.likes %>
+                    <%= Time.at(member.publication_date.to_i).to_formatted_s(:db) %>
                   </tr>
               <% end %>
               </tbody>
