@@ -1,3 +1,12 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#stop_button").click(function(){
+
+        });
+    });
+</script>
+<div class="overlay"></div>
 <div class="container-fluid">
   <div class="row">
     <%= render 'patrial/navbar' %>
@@ -33,7 +42,7 @@
             <td><%= @stock.hashtag %></td>
             <% if @stock.is_valid %>
                 <td>Акция активна</td>
-                <td><%= link_to 'Остановить', edit_stock_path(@stock) %></td>
+                <td><%= link_to 'Остановить', edit_stock_path(@stock), id: "stop_button" %></td>
                 </td>
             <% else %>
                 <td>Акция остановленна</td>
