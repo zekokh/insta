@@ -7,7 +7,7 @@ class MembersController < ApplicationController
   def change
     member = Member.find(params[:id])
     member.update(display_in_stocks: true)
-    redirect_to members_path(member)
+    redirect_to members_false_path(member)
   end
 
   def member_true
