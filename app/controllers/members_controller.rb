@@ -17,6 +17,6 @@ class MembersController < ApplicationController
   end
 
   def show
-    @member = Member.find_by(id: params[:id])
+    @member = Member.where(id: params[:id])
   end
 end
