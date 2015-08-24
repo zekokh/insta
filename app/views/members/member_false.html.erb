@@ -24,12 +24,15 @@
                       <% end %>
                       <%= member.nickname %>
                     </td>
-                    <td><%= link_to 'Разблокировать', '/', method: "get", type: "button", class: "btn btn-default" %></td>
+                    <td></td>
                   </tr>
                   <tr>
                     <td><%= image_tag member.photo_url, height: '360', width: '360' %>
-                      <b>Лайки:</b> <%= member.likes %></td>
                     <td></td>
+                  </tr>
+                  <tr>
+                    <td> <b>Лайки:</b> <%= member.likes %></td>
+                    <td><%= link_to 'Разблокировать', '/', method: "get", type: "button", class: "btn btn-default" %></td>
                   </tr>
               <% end %>
               </tbody>
