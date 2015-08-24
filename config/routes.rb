@@ -7,6 +7,8 @@ Insta::Application.routes.draw do
   get '/members_true', to: 'members#member_true'
   get '/members_false', to: 'members#member_false'
   get '/member/:id', to: 'members#show'
+  get '/change_member/:id', to: 'member#change_dispaly_status'
+
   resources :home, :information_to_connects, :stocks
   resources :sessions, only: [:new, :create, :destroy]
 
