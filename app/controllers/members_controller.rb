@@ -4,7 +4,7 @@ class MembersController < ApplicationController
     render :json => @members
   end
 
-  def change_dispaly_status
+  def change
     member = Member.find(params[:id])
     member.update(display_in_stocks: true)
     redirect_to members_path(member)
