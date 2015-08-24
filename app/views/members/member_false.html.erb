@@ -15,29 +15,20 @@
               </thead>
               <tbody>
               <% @members_false.each do |member| %>
-                  <tr>
-                    <td>
-                      <% if member.name.length > 0 %>
-                          <%= member.name %>
-                      <% else %>
-                          Имя не указанно
-                      <% end %>
-                      &nbsp; <b>@<%= member.nickname %></b>
-                    </td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td><%= image_tag member.photo_url, height: '360', width: '360' %>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td><%= link_to 'Разблокировать', '/', method: "get", type: "button", class: "btn btn-default" %></td>
-                    <td><b>Лайки:</b> <%= member.likes %></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                  </tr>
+
+                  <div class="thumbnail">
+                    <%= image_tag member.photo_url, height: '360', width: '360' %>
+                    <div class="caption">
+                      <h3><% if member.name.length > 0 %>
+                            <%= member.name %>
+                        <% else %>
+                            Имя не указанно
+                        <% end %></h3>
+                      <p><b>@<%= member.nickname %></b></p>
+                      <p><%= link_to 'Разблокировать', '/', method: "get", type: "button", class: "btn btn-default" %> <a href="#" class="btn btn-default" role="button"><b>Лайки:</b> <%= member.likes %></a></p>
+                    </div>
+                  </div>
+
               <% end %>
               </tbody>
             </table>
