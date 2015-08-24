@@ -15,4 +15,8 @@ class MembersController < ApplicationController
   def member_false
     @members_false = Member.where(display_in_stocks: false)
   end
+
+  def show
+
+  end
 end

@@ -6,28 +6,25 @@
       <div class="col-lg-12">
 
         <% if @members_true.length > 0 %>
-            <table class="table table-hover">
-              <thead>
-              <tr>
-                <th>№</th>
-                <th></th>
-              </tr>
-              </thead>
-              <tbody>
-              <% @members_true.each do |member| %>
-                  <tr> <td><%= image_tag member.photo_url, height: '32', width: '32' %></td></tr>
-                  <tr>
-                    <% if member.name.length > 0 %>
-                        <td><%= member.name %></td>
-                    <% else %>
-                        <td>Имя не указанно</td>
-                    <% end %>
-                    <td><%= member.nickname %></td>
-                    <td><%= member.likes %></td>
-                    <td><%= Time.at(member.publication_date.to_i).to_formatted_s(:db) %></td>
-                  </tr>
-              <% end %>
-              </tbody>
+            <% @members_true.each do |member| %>
+                <div class="thumbnail">
+                  <%= image_tag member.photo_url, height: '360', width: '360' %>
+                  <div class="caption">
+                    <h3>
+                      <% if member.name.length > 0 %>
+                          <%= member.name %>
+                      <% else %>
+                          Имя не указанно
+                      <% end %></h3>
+
+                    <p><b>@<%= member.nickname %></b></p>
+
+                    <p><%= link_to 'Разблокировать', '/', method: "get", type: "button", class: "btn btn-primary" %>
+                      <a href="#" class="btn btn-default" role="button"><b>Лайки:</b> <%= member.likes %></a></p>
+                  </div>
+                </div>
+            <% end %>
+            </tbody>
             </table>
         <% end %>
 

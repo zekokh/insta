@@ -6,31 +6,28 @@
       <div class="col-lg-6">
 
         <% if @members_false.length > 0 %>
-            <table class="table">
-              <thead>
-              <tr>
-                <th></th>
-                <th></th>
-              </tr>
-              </thead>
-              <tbody>
-              <% @members_false.each do |member| %>
 
-                  <div class="thumbnail">
-                    <%= image_tag member.photo_url, height: '360', width: '360' %>
-                    <div class="caption">
-                      <h3><% if member.name.length > 0 %>
-                            <%= member.name %>
-                        <% else %>
-                            Имя не указанно
-                        <% end %></h3>
-                      <p><b>@<%= member.nickname %></b></p>
-                      <p><%= link_to 'Разблокировать', '/', method: "get", type: "button", class: "btn btn-primary" %> <a href="#" class="btn btn-default" role="button"><b>Лайки:</b> <%= member.likes %></a></p>
-                    </div>
+            <% @members_false.each do |member| %>
+
+                <div class="thumbnail">
+                  <%= image_tag member.photo_url, height: '360', width: '360' %>
+                  <div class="caption">
+                    <h3>
+                      <% if member.name.length > 0 %>
+                          <%= member.name %>
+                      <% else %>
+                          Имя не указанно
+                      <% end %></h3>
+
+                    <p><b>@<%= member.nickname %></b></p>
+
+                    <p><%= link_to 'Разблокировать', '/', method: "get", type: "button", class: "btn btn-primary" %>
+                      <a href="#" class="btn btn-default" role="button"><b>Лайки:</b> <%= member.likes %></a></p>
                   </div>
+                </div>
 
-              <% end %>
-              </tbody>
+            <% end %>
+            </tbody>
             </table>
         <% end %>
       </div>
