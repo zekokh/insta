@@ -17,7 +17,7 @@
             <p><b>@<%= @member.nickname %></b></p>
 
             <p><%= link_to 'Разблокировать', '/', method: "get", type: "button", class: "btn btn-primary" %>
-              <a href="#" class="btn btn-default" role="button"><b>Лайки:</b> <%= member.likes %></a></p>
+              <a href="#" class="btn btn-default" role="button"><b>Лайки:</b> <%= @member.likes %></a></p>
           </div>
 
         </div>
