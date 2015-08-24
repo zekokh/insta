@@ -9,8 +9,10 @@ class MembersController < ApplicationController
   end
 
   def member_true
+    @members_true = Member.where(display_in_stocks: true)
   end
 
   def member_false
+    @members_false = Member.where(display_in_stocks: false)
   end
 end
