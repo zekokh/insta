@@ -18,18 +18,20 @@
               <% @members_false.each do |member| %>
                   <tr>
                     <td>
-                    <% if member.name.length > 0 %>
-                        <%= member.name %>
-                    <% else %>
-                        Имя не указанно
-                    <% end %>
-                    <%= member.nickname %>
-                    Лайки: <%= member.likes %>
-                    <%= Time.at(member.publication_date.to_i).to_formatted_s(:db) %>
+                      <% if member.name.length > 0 %>
+                          <%= member.name %>
+                      <% else %>
+                          Имя не указанно
+                      <% end %>
+                      <%= member.nickname %>
+                      <b>Лайки:</b> <%= member.likes %>
                     </td>
                     <td><%= link_to 'Разблокировать', '/', method: "get", type: "button", class: "btn btn-default" %></td>
                   </tr>
-                  <tr> <td><%= image_tag member.photo_url, height: '360', width: '360' %></td></tr>
+                  <tr>
+                    <td><%= image_tag member.photo_url, height: '360', width: '360' %></td>
+                    <td></td>
+                  </tr>
               <% end %>
               </tbody>
             </table>
