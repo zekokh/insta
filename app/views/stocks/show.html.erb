@@ -80,7 +80,7 @@
                     <% else %>
                         <td>Имя не указанно</td>
                     <% end %>
-                    <td><%= link_to member.nickname, '/' %></td>
+                    <td><%= link_to member.nickname, "/member/#{member.id}" %></td>
                     <td><%= member.likes %></td>
                     <td><%= Time.at(member.publication_date.to_i).to_formatted_s(:db) %></td>
                     <td><%= image_tag member.photo_url, height: '32', width: '32' %></td>
