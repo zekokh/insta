@@ -1,6 +1,6 @@
 class MembersController < ApplicationController
   def get_members
-    @members = Member.order(likes: :desc).take(10)
+    @members = Member.order(likes: :desc, display_in_stocks: true).take(10)
     render :json => @members
   end
 
