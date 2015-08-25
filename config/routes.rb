@@ -2,7 +2,7 @@ Insta::Application.routes.draw do
   root 'information_to_connects#index'
 
   get '/member/:id', to: 'members#show'
-  get '/change/:id', to: 'member#change'
+  get '/change/:id', to: 'members#change'
   get '/get_token', to: 'token#get_token'
   get '/get_tags', to: 'tags#get_tags'
   get '/members', to: 'members#get_members'
