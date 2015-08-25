@@ -6,8 +6,16 @@ class MembersController < ApplicationController
 
   def change
     member = Member.find(params[:id])
-    member.update(display_in_stocks: true)
-    redirect_to "/member/#{member.id}"
+    if member
+      if member.display_in_stocks
+        member.update(display_in_stocks: false)
+      else
+        member.update(display_in_stocks: true)
+      end
+      redirect_to "/member/#{member.id}"
+    else
+      redirect_to "/stocks", notice: "Что-то пошло не так :("
+    end
   end
 
   def member_true
