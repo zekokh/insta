@@ -17,13 +17,14 @@
                           Имя не указанно
                       <% end %></h3>
 
-                    <p><b>@<%= member.nickname %></b> | <%= Time.at(@member.publication_date.to_i).to_formatted_s(:db) %></p>
+                    <p><b>@<%= member.nickname %></b> | <%= Time.at(member.publication_date.to_i).to_formatted_s(:db) %>
+                    </p>
 
                     <p>
-                      <% if @member.display_in_stocks %>
-                          <%= link_to 'Заблокировать', "/change/#{@member.id}", method: "get", type: "button", class: "btn btn-danger" %>
+                      <% if member.display_in_stocks %>
+                          <%= link_to 'Заблокировать', "/change/#{member.id}", method: "get", type: "button", class: "btn btn-danger" %>
                       <% else %>
-                          <%= link_to 'Разблокировать', "/change/#{@member.id}", method: "get", type: "button", class: "btn btn-primary" %>
+                          <%= link_to 'Разблокировать', "/change/#{member.id}", method: "get", type: "button", class: "btn btn-primary" %>
                       <% end %>
                       <a href="#" class="btn btn-default" role="button"><b>Лайки:</b> <%= member.likes %></a>
                     </p>
