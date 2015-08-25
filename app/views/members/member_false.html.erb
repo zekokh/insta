@@ -19,7 +19,7 @@
                           Имя не указанно
                       <% end %></h3>
 
-                    <p><b>@<%= member.nickname %></b></p>
+                    <p><b>@<%= member.nickname %></b> | <%= Time.at(@member.publication_date.to_i).to_formatted_s(:db) %></p>
 
                     <p>
                       <% if @member.display_in_stocks %>
