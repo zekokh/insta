@@ -6,7 +6,8 @@ class MembersController < ApplicationController
 
   def change
     member = Member.find(params[:id])
-    member.update(display_in_stocks: true)
+    member.display_in_stocks= true
+    member.save
     redirect_to "/member/#{member.id}"
   end
 
