@@ -19,6 +19,6 @@ class Manager
     end
   end
   def Manager.stop
-    Members.search(@tag, '2085914834.24626bd.3d0157a5dea14f0ab91b4fe6ec88b709')
+    Members.search(@tag, @info.access_token)
   end
 end
