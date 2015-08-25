@@ -14,7 +14,7 @@
                   Имя не указанно
               <% end %></h3>
 
-            <p><b>@<%= @member.nickname %> | <%= Time.at(@member.publication_date.to_i).to_formatted_s(:db) %></b></p>
+            <p><b>@<%= @member.nickname %></b> | <%= Time.at(@member.publication_date.to_i).to_formatted_s(:db) %></p>
 
             <p><%= link_to 'Разблокировать', "/change/#{@member.id}", method: "get", type: "button", class: "btn btn-primary" %>
               <a href="#" class="btn btn-default" role="button"><b>Лайки:</b> <%= @member.likes %></a></p>
