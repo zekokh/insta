@@ -104,7 +104,7 @@
         left: offset.left
       return
     update: (newDate) ->
-      @date = DPGlobal.parseDate(if typeof newDate == 'string' then newDate else if @isInput then @element.prop('value') else @element.data('date'), @format)
+      @date = DPGlobal.parseDate(if typeof newDate == 'string' then newDate else if @isInput then @element.prop('value') else @element.data('date') @format)
       @viewDate = new Date(@date.getFullYear(), @date.getMonth(), 1, 0, 0, 0, 0)
       @fill()
       return
