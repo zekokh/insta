@@ -5,11 +5,13 @@ gem 'rails', '4.0.2'
 gem 'pry-rails'
 gem 'rest-client'
 gem 'json'
-gem 'instagram'
+
 gem 'whenever', :require => false
 
 gem 'pg'
-gem 'rails_12factor', group: :production
+gem 'capistrano', '~> 3.1.0'
+gem 'capistrano-bundler', '~> 1.1.2'
+gem 'capistrano-rails', '~> 1.1.1'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
