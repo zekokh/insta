@@ -43,6 +43,7 @@ class StocksController < ApplicationController
 
   def edit
     @stock.is_valid=false
+    puts('Акция остановленна идет поиск участников...')
     Manager.stop
     if @stock.save
       @members = Member.order(likes: :desc).take(10)
@@ -57,7 +58,9 @@ class StocksController < ApplicationController
 
   def destroy
     Member.delete_all
+    puts('Все участники удаленны')
     @stock.destroy
+    puts('Акция удаленна')
     redirect_to stocks_path
   end
 

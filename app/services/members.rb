@@ -7,6 +7,7 @@ class Members
   # Поиск участников по тегу указанному в акции
   def Members.search(tag, access_token)
     json ||= JSON.parse(RestClient.get "https://api.instagram.com/v1/tags/#{tag}/media/recent?access_token=#{access_token}")
+    # todo проверка если значение не возвращаются
 
     json['data'].each do |user|
       publication_date = user['created_time']
@@ -14,6 +15,7 @@ class Members
         puts "не соответствует условию"
         return
       end
+      puts("Идет поиск участников: #{user['user']['username']} Дата публикации: #{publication_date}")
       if publication_date.to_i <= @expiration_date
         add_member(user['user']['full_name'],
                    user['user']['username'],
@@ -29,12 +31,14 @@ class Members
   def Members.members_from_next_url(next_url)
     if next_url != nil
       next_url_json ||= JSON.parse(RestClient.get next_url)
+      # todo проверка если значение не возвращаются
       next_url_json['data'].each do |user|
 
         publication_date = user['created_time']
         if publication_date.to_i < @start_date
           return
         end
+        puts("Идет поиск участников: #{user['user']['username']} Дата публикации: #{publication_date}")
         if publication_date.to_i <= @expiration_date
           add_member(user['user']['full_name'],
                      user['user']['username'],

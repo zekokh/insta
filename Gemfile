@@ -8,8 +8,7 @@ gem 'json'
 gem 'instagram'
 gem 'whenever', :require => false
 
-gem 'pg'
-gem 'rails_12factor', group: :production
+gem 'sqlite3'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

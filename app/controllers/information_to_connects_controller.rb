@@ -34,6 +34,7 @@ class InformationToConnectsController < ApplicationController
   end
 
   def show
+    @redirect_uri = 'http://localhost:3000/information_to_connects'
   end
 
   def edit

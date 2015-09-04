@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20150814100414) do
     t.integer  "likes"
     t.string   "publication_date"
     t.string   "photo_url"
-    t.boolean  "display_in_stocks", default: false
+    t.boolean  "display_in_stocks", default: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
