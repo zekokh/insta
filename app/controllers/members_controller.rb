@@ -19,11 +19,11 @@ class MembersController < ApplicationController
   end
 
   def member_true
-    @members_true = Member.where(display_in_stocks: true)
+    @members_true = Member.where(display_in_stocks: true).order(likes: :desc)
   end
 
   def member_false
-    @members_false = Member.where(display_in_stocks: false)
+    @members_false = Member.where(display_in_stocks: false).order(likes: :desc)
   end
 
   def show

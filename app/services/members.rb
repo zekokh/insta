@@ -6,9 +6,13 @@ class Members
   end
   # Поиск участников по тегу указанному в акции
   def Members.search(tag, access_token)
+    puts 'Дата начало'
+    puts @start_date
+    puts 'Дата окончания'
+    puts @expiration_date
     json ||= JSON.parse(RestClient.get "https://api.instagram.com/v1/tags/#{tag}/media/recent?access_token=#{access_token}")
     # todo проверка если значение не возвращаются
-
+    puts json
     json['data'].each do |user|
       publication_date = user['created_time']
       if publication_date.to_i < @start_date

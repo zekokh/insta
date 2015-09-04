@@ -1,14 +1,4 @@
-<script type="text/javascript">
-    $(document).ready(function () {
-        /* Активируется датапикер на поле Дата рождения */
-        $('#stock_start_date').datepicker({
-            format: 'yyyy-mm-dd'
-        });
-        $('#stock_expiration_date').datepicker({
-            format: 'yyyy-mm-dd'
-        });
-    });
-</script>
+
 <div class="container-fluid">
   <div class="row">
     <%= render 'patrial/navbar' %>
@@ -26,6 +16,7 @@
                             <% end %>
                           </div>
                       <% end %>
+
                       <div id="start_date" class="form-group"><%= f.text_field :start_date, class: "form-control", placeholder: "дата начала", maxlength: 30 %></div>
                       <div id="expiration_date" class="form-group"><%= f.text_field :expiration_date, class: "form-control", placeholder: "дата окончания", maxlength: 30 %></div>
                       <div id="expiration_time" class="form-group"><%= f.text_field :expiration_time, class: "form-control", placeholder: "время окончания", maxlength: 30 %></div>

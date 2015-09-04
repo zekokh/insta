@@ -5,11 +5,16 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 
-  <%= javascript_include_tag "moment-with-locales.min", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "ion.calendar.min", "data-turbolinks-track" => true %>
-  <%= stylesheet_link_tag    "ion.calendar", media: "all", "data-turbolinks-track" => true %>
-
   <%= csrf_meta_tags %>
+  <script type="text/javascript">
+      $(document).ready(function () {
+          /* Активируется датапикер на поле Дата рождения
+          $("#calen").ionDatePicker();
+          /* $('#stock_expiration_date').datepicker({
+           format: 'yyyy-mm-dd'
+           });*/
+      });
+  </script>
 </head>
 <body>
 
