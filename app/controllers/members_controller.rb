@@ -1,4 +1,6 @@
 class MembersController < ApplicationController
+  skip_before_action :user_signed_in?, only: :get_members
+
   def get_members
     @members = Member.where(display_in_stocks: true).order(likes: :desc).take(10)
     render :json => @members
