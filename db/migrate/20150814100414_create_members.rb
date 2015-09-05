@@ -6,7 +6,7 @@ class CreateMembers < ActiveRecord::Migration
       t.integer :likes
       t.string  :publication_date
       t.string  :photo_url
-      t.boolean :display_in_stocks, default: false
+      t.boolean :display_in_stocks, default: true
 
       t.timestamps
     end
