@@ -14,6 +14,7 @@ class Members
         puts "не соответствует условию"
         return
       end
+      puts("Идет поиск участников: #{user['user']['username']} Дата публикации: #{publication_date}")
       if publication_date.to_i <= @expiration_date
         add_member(user['user']['full_name'],
                    user['user']['username'],
@@ -35,6 +36,7 @@ class Members
         if publication_date.to_i < @start_date
           return
         end
+        puts("Идет поиск участников: #{user['user']['username']} Дата публикации: #{publication_date}")
         if publication_date.to_i <= @expiration_date
           add_member(user['user']['full_name'],
                      user['user']['username'],
