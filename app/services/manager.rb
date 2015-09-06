@@ -29,6 +29,11 @@ class Manager
     else
       return
     end
-    Members.search(@tag, @info.access_token)
+    flag = Members.search(@tag, @info.access_token)
+    if flag
+      return true
+    else
+      return false
+    end
   end
 end

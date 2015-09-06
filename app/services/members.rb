@@ -28,6 +28,7 @@ class Members
       end
     end
     members_from_next_url(json['pagination']['next_url'])
+    return true
   end
 
   # Поиск участников в следующей ссылки указанной пир первом запросе
