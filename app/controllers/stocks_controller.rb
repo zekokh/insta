@@ -57,7 +57,9 @@ class StocksController < ApplicationController
 
   def destroy
     Member.delete_all
+    puts('Все участники удаленны')
     @stock.destroy
+    puts('Акция удаленна')
     redirect_to stocks_path
   end
 
