@@ -43,15 +43,13 @@ class StocksController < ApplicationController
 
   def edit
     @stock.is_valid=false
-    flag = Manager.stop
-    if flag
+    Manager.stop
       if @stock.save
         @members = Member.order(likes: :desc).take(10)
         render 'show'
       else
         render 'show'
       end
-    end
   end
 
   def update
