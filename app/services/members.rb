@@ -7,6 +7,7 @@ class Members
       @start_date ||=Time.parse(@stock.start_date).to_i
       @expiration_date ||= "#{@stock.expiration_date} #{@stock.expiration_time}".to_time.to_i
     else
+      puts('в базе нет данных о акции')
       return
     end
     json ||= JSON.parse(RestClient.get "https://api.instagram.com/v1/tags/#{tag}/media/recent?access_token=#{access_token}")

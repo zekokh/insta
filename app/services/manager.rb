@@ -1,11 +1,14 @@
 class Manager
-  if Stock.first !=nil
-    @stock = Stock.first
-    @tag = URI.encode(@stock.hashtag)
-    @info ||= InformationToConnect.first
-  end
+
 
   def Manager.start
+    if Stock.first !=nil
+      @stock = Stock.first
+      @tag = URI.encode(@stock.hashtag)
+      @info ||= InformationToConnect.first
+    else
+      return
+    end
     if @stock !=nil
       if @stock.is_valid
         Members.search(@tag, @info.access_token)
@@ -19,6 +22,13 @@ class Manager
     end
   end
   def Manager.stop
+    if Stock.first !=nil
+      @stock = Stock.first
+      @tag = URI.encode(@stock.hashtag)
+      @info ||= InformationToConnect.first
+    else
+      return
+    end
     Members.search(@tag, @info.access_token)
   end
 end
