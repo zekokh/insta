@@ -43,7 +43,8 @@ class StocksController < ApplicationController
 
   def edit
     @stock.is_valid=false
-    Manager.stop
+    #Manager.stop
+    # todo остановить в ручную через консоль!
       if @stock.save
         @members = Member.order(likes: :desc).take(10)
         render 'show'
