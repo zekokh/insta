@@ -54,7 +54,11 @@ class Members
   end
 
   def Members.add_member(name, nickname, likes, publication_date, photo_url)
-    member = Member.find_by(nickname: nickname, publication_date: publication_date)
+    if nickname == "jacques_andre_"
+      puts "Участник jacques_andre_ является организатором акции поэтому не учитывается в акции."
+      return
+    end
+    member ||= Member.find_by(nickname: nickname, publication_date: publication_date)
     stock ||= Stock.first
 
     if member
