@@ -1,9 +1,16 @@
 class MembersController < ApplicationController
   skip_before_action :user_signed_in?, only: :get_members
 
-  Member.delete_all
+  #Member.delete_all
   def get_members
     @members = Member.where(display_in_stocks: true).order(likes: :desc).take(10)
+    render :json => @members
+  end
+
+  def get_middle_members
+    @members = Member.where(display_in_stocks: true).order(likes: :desc)
+    count = @members.count
+    puts(count)
     render :json => @members
   end
 
