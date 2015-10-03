@@ -8,9 +8,15 @@ class MembersController < ApplicationController
   end
 
   def get_middle_members
-    @members = Member.where(display_in_stocks: true).order(likes: :desc)
-    count = @members.count
-    puts(count)
+    @all = Member.where(display_in_stocks: true).order(likes: :desc)
+    count = @all.count
+    if count <= 9
+      @members = Member.where(display_in_stocks: true).order(likes: :desc).take(10)
+    elsif count > 10
+        first = (count - 9)/2
+        @members = Member.where(display_in_stocks: true).order(likes: :desc).limit(9).offset(first)
+    end
+
     render :json => @members
   end
 
