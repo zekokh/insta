@@ -6,7 +6,7 @@ Insta::Application.routes.draw do
   get '/get_token', to: 'token#get_token'
   get '/get_tags', to: 'tags#get_tags'
   get '/members', to: 'members#get_members'
-  get '/middle_members', to: 'members#get_middle_members'
+  get '/middlemembers', to: 'members#get_middle_members'
   get '/members_true', to: 'members#member_true'
   get '/members_false', to: 'members#member_false'
 
