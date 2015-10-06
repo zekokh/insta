@@ -7,7 +7,7 @@ class MembersController < ApplicationController
     #render :json => @members
     @all = Member.where(display_in_stocks: true).order(likes: :desc)
     count = @all.count
-    if count <= 9
+    if count <= 10
       @members = Member.where(display_in_stocks: true).order(likes: :desc).take(10)
     elsif count > 10
       first = (count - 9)/2
