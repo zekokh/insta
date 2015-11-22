@@ -33,7 +33,7 @@ class StocksController < ApplicationController
 
   def show
     #Manager.start
-    @members = Member.order(likes: :desc)
+    @members = Member.order(likes: :desc, publication_date: :desc)
 
     #@members = Member.all
 
@@ -46,7 +46,7 @@ class StocksController < ApplicationController
     #Manager.stop
     # todo остановить в ручную через консоль!
       if @stock.save
-        @members = Member.order(likes: :desc).take(10)
+        @members = Member.order(likes: :desc, publication_date: :desc).take(10)
         render 'show'
       else
         render 'show'
