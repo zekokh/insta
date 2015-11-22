@@ -5,13 +5,13 @@ class MembersController < ApplicationController
   def get_members
     #@members = Member.where(display_in_stocks: true).order(likes: :desc).take(10)
     #render :json => @members
-    @all = Member.where(display_in_stocks: true).order(likes: :desc)
+    @all = Member.where(display_in_stocks: true).order(likes: :desc, publication_date: :desc)
     count = @all.count
     if count <= 10
-      @members = Member.where(display_in_stocks: true).order(likes: :desc).take(10)
+      @members = Member.where(display_in_stocks: true).order(likes: :desc, publication_date: :desc).take(10)
     elsif count > 10
       first = (count - 9)/2
-      @members = Member.where(display_in_stocks: true).order(likes: :desc).limit(9).offset(first)
+      @members = Member.where(display_in_stocks: true).order(likes: :desc, publication_date: :desc).limit(9).offset(first)
     end
 
     render :json => @members
